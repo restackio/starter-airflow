@@ -1,6 +1,6 @@
 # Airflow default Restack reposoitory
 
-This is a repository to get you started for generating preview environments from a custom airflow image.
+This is the default Airflow repository to get you started for generating preview environments from a custom airflow image with Restack.
 
 ### Dags
 1. If you want to extend the image with custom dags, just add them to the dags directory.

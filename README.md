@@ -1,4 +1,4 @@
-# Airflow default Restack Reposoitory
+# Airflow default Restack reposoitory
 
 This is a repository to get you started for generating preview environments from a custom airflow image.
 

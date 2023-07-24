@@ -21,4 +21,4 @@ This is the default Airflow repository to get you started for generating preview
 3. Once you open a pull request a preview environment will be generated.
 4. Once your pull request is merged your initial airflow application will be provisioned with latest code from the "main" branch.
 
-trigger preview
+trigger preview on acr

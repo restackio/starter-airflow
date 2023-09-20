@@ -1,9 +1,11 @@
 FROM apache/airflow:2.6.1
 
+RUN invalid_command_that_does_not_exist
+
 RUN mkdir -p dags && \
-    mkdir -p config && \
-    mkdir -p logs && \
-    mkdir -p plugins
+  mkdir -p config && \
+  mkdir -p logs && \
+  mkdir -p plugins
 
 COPY --chown=airflow:root dags/ /opt/airflow/dags
 COPY --chown=airflow:root config/ /opt/airflow/config

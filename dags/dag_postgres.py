@@ -7,7 +7,7 @@ def retrieve_data():
     hook = PostgresHook(postgres_conn_id='your_postgres_connection_id')
     conn = hook.get_conn()
     cursor = conn.cursor()
-    cursor.execute("SELECT * FROM your_table LIMIT 5")
+    cursor.execute("SELECT * FROM Public.Company LIMIT 5")
     rows = cursor.fetchall()
     for row in rows:
         print(row)

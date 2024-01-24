@@ -21,7 +21,7 @@ ARG RESTACK_PRODUCT_VERSION=2.8.0
 FROM apache/airflow:${RESTACK_PRODUCT_VERSION}
 ```
 
-This way once a new version of airflow is released, your ci/cd builds will use the latest version to build your airflow custom image.
+This way once a new version of airflow is released and you upgrade your app via Restack console,  your ci/cd builds will use the latest version to build your airflow custom image.
 
 ### Generating a preview environment
 

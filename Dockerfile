@@ -1,4 +1,6 @@
-FROM apache/airflow:2.8.0
+ARG RESTACK_PRODUCT_VERSION=2.8.0
+
+FROM apache/airflow:${RESTACK_PRODUCT_VERSION}
 
 RUN mkdir -p dags && \
     mkdir -p config && \

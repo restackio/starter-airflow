@@ -13,6 +13,29 @@ This is the default Airflow repository to get you started for generating preview
 
 1. If you want to extend the image with custom configuration, just add them to the config directory.
 
+### Python environment
+The project has Poetry integration so you can add your python dependencies. Just run the following command:
+
+```bash
+poetry install
+```
+
+Once installed you can run some commands like:
+
+```bash
+poetry run python3 dags/test_dag.py
+```
+
+The previous command tests a DAG to detect some warnings or syntax errors for example. In case you want to add a new library please follow the [official documentation](https://python-poetry.org/docs/cli/#add) of Poetry.
+
+#### Pre-commit
+Pre-commit was installed in this repository for giving a standarized way for developing. If you want to install this tool just run the following:
+
+```bash
+poetry run pre-commit install
+```
+
+so now you can add your changes and run the checks defined in `.pre-commit-config.yaml` before performing the commit in order to follow best practices for coding.
 
 ### Restack Product Version
 Restack will expose a build arg for the Dockerfile called: RESTACK_PRODUCT_VERSION. This will contain the image tag of the product. As seen on this starter repo's Dockerfile you can use it as such:

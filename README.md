@@ -29,6 +29,3 @@ This way once a new version of airflow is released and you upgrade your app via 
 2. Follow steps in the [official Restack documentation](https://www.restack.io/docs/airflow-cicd)
 3. Once you open a pull request a preview environment will be generated.
 4. Once your pull request is merged your initial Airflow application will be provisioned with latest code from the "main" branch.
-
-
-test

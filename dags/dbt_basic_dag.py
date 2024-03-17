@@ -4,6 +4,7 @@ A basic dbt DAG that shows how to run dbt commands via the BashOperator
 Follows the standard dbt seed, run, and test pattern.
 """
 import os
+from pathlib import Path
 from pendulum import datetime
 
 from airflow import DAG
@@ -13,6 +14,12 @@ from airflow.operators.bash_operator import BashOperator
 # would probably come from a config file and/or environment variables!
 DBT_PROJECT_DIR = os.environ["DBT_PROJECT_DIR"]
 
+def restart_data():
+    try:
+        file_to_rem = Path(f"{DBT_PROJECT_DIR}/jaffle_shop.duckdb")
+        file_to_rem.unlink()
+    except:
+        pass
 
 with DAG(
     "dbt_basic_dag",

@@ -28,6 +28,9 @@ with DAG(
     schedule=None,
     catchup=False,
 ) as dag:
+
+    restart_data_task = PythonOperator(task_id="restart_data", python_callable=restart_data)
+
     # This task loads the CSV files from dbt/data into the local postgres database for the purpose of this demo.
     # In practice, we'd usually expect the data to have already been loaded to the database.
     dbt_seed = BashOperator(
@@ -45,4 +48,4 @@ with DAG(
         bash_command=f"cd {DBT_PROJECT_DIR} && dbt test --profiles-dir {DBT_PROJECT_DIR} --project-dir {DBT_PROJECT_DIR}",
     )
 
-    dbt_seed >> dbt_run >> dbt_test
+    restart_data_task >> dbt_seed >> dbt_run >> dbt_test

@@ -4,4 +4,8 @@ jaffle_shop:
     dev:
       type: duckdb
       path: 'jaffle_shop.duckdb'
+      filesystems:
+        - fs: gcs
       threads: 24
+      external_root: "gcs://{{ env_var('GCS_BUCKET_NAME') }}/data"
+      

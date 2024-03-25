@@ -1,3 +1,5 @@
 apache-airflow-providers-google
 lxml
 beautifulsoup4
+astronomer-providers
+pandas

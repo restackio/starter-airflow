@@ -13,6 +13,8 @@ This is the default Airflow repository to get you started for generating preview
 
 1. If you want to extend the image with custom configuration, just add them to the config directory.
 
+### XComs
+1. It is possible to pass data between tasks natively just using the [Astronomer provider package](https://docs.astronomer.io/learn/xcom-backend-tutorial?tab=gcp#use-pre-built-xcom-backends). To try XCOM feature just run `simple_xcom_dag` or `fetch_pokemon_data` DAGs.
 
 ### Restack Product Version
 Restack will expose a build arg for the Dockerfile called: RESTACK_PRODUCT_VERSION. This will contain the image tag of the product. As seen on this starter repo's Dockerfile you can use it as such:

@@ -7,5 +7,5 @@ jaffle_shop:
       filesystems:
         - fs: gcs
       threads: 24
-      external_root: "gcs://{{ env_var('GCS_BUCKET_NAME') }}/data"
+      external_root: "gs://{{ env_var('GCS_BUCKET_NAME') }}/data"
       

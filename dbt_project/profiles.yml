@@ -5,6 +5,8 @@ jaffle_shop:
       type: duckdb
       filesystems:
         - fs: gcs
+          access: read_write
+          token: google_default
       threads: 24
       external_root: "gcs://{{ env_var('GCS_BUCKET_NAME') }}/data"
       

@@ -1,3 +1,4 @@
+{{ config(materialized='external', location="gcs://{{ env_var('GCS_BUCKET_NAME') }}/data/orders.parquet") }}
 {% set payment_methods = ['credit_card', 'coupon', 'bank_transfer', 'gift_card'] %}
 
 with orders as (

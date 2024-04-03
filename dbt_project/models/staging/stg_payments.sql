@@ -1,10 +1,11 @@
+{{ config(materialized='external', location="gcs://{{ env_var('GCS_BUCKET_NAME') }}/data/stg_payments.parquet") }}
 with source as (
     
     {#-
     Normally we would select from the table here, but we are using seeds to load
     our data in this project
     #}
-    select * from {{ ref('raw_payments') }}
+    select * from "gcs://{{ env_var('GCS_BUCKET_NAME') }}/data/raw_payments.csv"
 
 ),
 

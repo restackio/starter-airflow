@@ -25,10 +25,13 @@ seeds:
 
 models:
   jaffle_shop:
-    materialized: external
     staging:
       materialized: external
       +docs:
         node_color: 'silver'
     +docs:
       node_color: 'gold'
+
+on-run-start:
+  - "{{ register_upstream_external_models() }}"
+  

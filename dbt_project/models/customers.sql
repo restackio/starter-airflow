@@ -1,3 +1,4 @@
+{{ config(materialized='external', location="gcs://{{ env_var('GCS_BUCKET_NAME') }}/data/customers.parquet") }}
 with customers as (
 
     select * from {{ ref('stg_customers') }}

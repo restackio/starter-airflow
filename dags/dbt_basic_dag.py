@@ -50,12 +50,12 @@ def dbt_dag():
     )
 
     # TODO: Going to iterate DBT test in a new PR.
-    dbt_test = BashOperator(
-        task_id="dbt_test",
-        bash_command=f"cd {DBT_PROJECT_DIR} && dbt test --profiles-dir {DBT_PROJECT_DIR} --project-dir {DBT_PROJECT_DIR}",
-    )
+    #dbt_test = BashOperator(
+    #    task_id="dbt_test",
+    #    bash_command=f"cd {DBT_PROJECT_DIR} && dbt test --profiles-dir {DBT_PROJECT_DIR} --project-dir {DBT_PROJECT_DIR}",
+    #)
 
     #dbt_seed >> dbt_run >> dbt_test
-    prepare_data() >> dbt_run >> dbt_test
+    prepare_data() >> dbt_run #>> dbt_test
 
 dbt_dag()

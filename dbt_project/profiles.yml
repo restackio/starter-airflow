@@ -3,7 +3,6 @@ jaffle_shop:
   outputs:
     dev:
       type: duckdb
-      path: /data/data.duckdb
       filesystems:
         - fs: gcs
           access: read_write

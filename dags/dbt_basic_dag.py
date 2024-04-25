@@ -27,35 +27,21 @@ def dbt_dag():
     # In practice, we'd usually expect the data to have already been loaded to the database.
 
     # Seed is not having support at the moment
-    #dbt_seed = BashOperator(
-    #    task_id="dbt_seed",
-    #    bash_command=f"cd {DBT_PROJECT_DIR} && dbt seed --profiles-dir {DBT_PROJECT_DIR} --project-dir {DBT_PROJECT_DIR}",
-    #)
-
-    @task
-    def prepare_data():
-        from google.cloud import storage
-
-        client = storage.Client()
-        bucket = client.get_bucket(os.environ['GCS_BUCKET_NAME'])
-        files = Path(DBT_PROJECT_DIR).glob('seeds/*.csv')
-        for file in files:
-            filename = str(file).split('/')[-1]
-            blob = bucket.blob(f'data/{filename}')
-            blob.upload_from_filename(file)
+    dbt_seed = BashOperator(
+        task_id="dbt_seed",
+        bash_command=f"cd {DBT_PROJECT_DIR} && dbt seed --profiles-dir {DBT_PROJECT_DIR} --project-dir {DBT_PROJECT_DIR}",
+    )
 
     dbt_run = BashOperator(
         task_id="dbt_run",
         bash_command=f"cd {DBT_PROJECT_DIR} && dbt run --profiles-dir {DBT_PROJECT_DIR} --project-dir {DBT_PROJECT_DIR}",
     )
 
-    # TODO: Going to iterate DBT test in a new PR.
-    #dbt_test = BashOperator(
-    #    task_id="dbt_test",
-    #    bash_command=f"cd {DBT_PROJECT_DIR} && dbt test --profiles-dir {DBT_PROJECT_DIR} --project-dir {DBT_PROJECT_DIR}",
-    #)
+    dbt_test = BashOperator(
+        task_id="dbt_test",
+        bash_command=f"cd {DBT_PROJECT_DIR} && dbt test --profiles-dir {DBT_PROJECT_DIR} --project-dir {DBT_PROJECT_DIR}",
+    )
 
-    #dbt_seed >> dbt_run >> dbt_test
-    prepare_data() >> dbt_run #>> dbt_test
+    dbt_seed >> dbt_run >> dbt_test
 
 dbt_dag()
